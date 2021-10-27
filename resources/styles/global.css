@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    color: white;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-element {
+    padding: 2px;
+    border: white 2px solid;
+}
+
+input {
+    background-color: black;
+    color: white;
+    border: white solid 2px;
+}
