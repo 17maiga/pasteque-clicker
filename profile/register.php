@@ -1,12 +1,10 @@
 <?php
 require_once "../resources/includes/header.php";
-if(isset($_SESSION["id"])){
-    header("Location: profile/profile.php");
+if (isset($_SESSION["id"])){
+    header("Location: profile.php");
 }
-if (isset($_SESSION['id'])){
-    header("Location: /profile");
-    die();
-}
+
+echo '<br>';
 
 if (isset($_POST['register'])) {
     $username = htmlspecialchars($_POST['login']);
@@ -35,19 +33,19 @@ if (isset($_POST['register'])) {
                 $_SESSION["login"] = $newUser["user_login"];
                 $_SESSION["type"] = $newUser["user_type"];
 
-                $insertDataRequest = $bdd->prepare("INSERT INTO `user_data` (`user_id`,`user_pasteques`,`user_curseurs`) VALUES (?, 0, 0)");
+                $insertDataRequest = $bdd->prepare("INSERT INTO `user_data` (`user_id`,`user_score`,`user_cursors`) VALUES (?, 0, 0)");
                 $insertDataRequest->execute(array($_SESSION["id"]));
 
                 header("Location: profile.php");
             }
+        } else {
+            echo '<div>This email is already in use</div>';
         }
-    }
-    else {
-        header("Location: login.php");
+    } else {
+        echo '<div>This username is already in use. Are you trying to <a href="login.php">login</a> ?</div>';
     }
 }
 ?>
-<br>
 <div>
     <form method="post">
         <input type="text" name="login" placeholder="Username" required/>

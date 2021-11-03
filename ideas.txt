@@ -1,0 +1,5 @@
+Delete message
+Delete user confirmation (with password?)
+Friend system ?
+User settings (save time...)
+Global default settings, only editable by admin

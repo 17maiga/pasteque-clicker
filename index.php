@@ -1,4 +1,5 @@
 <?php
 require_once "resources/includes/header.php";
-
-echo "bonjour";
+?>
+<br>
+<div>Welcome to Pasteque Clicker. Please log in or create an account to start playing.</div>

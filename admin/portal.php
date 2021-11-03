@@ -8,5 +8,10 @@ if (!isset($_SESSION["id"]) or $_SESSION["type"] != "admin"){
 <br>
 <div>
     <a href="settings.php">Manage game settings</a><br>
-    <a href="users.php">Manage users</a>
+    <a href="userList.php">Manage users</a><br>
+    <?php
+    if ($_SESSION["login"] == "admin"){
+        echo '<a href="deletedUsers.php">Deleted users</a><br>';
+    }
+    ?>
 </div>

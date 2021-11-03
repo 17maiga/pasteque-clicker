@@ -1,7 +1,7 @@
 <?php
 require_once "../resources/includes/header.php";
 if(isset($_SESSION["id"])){
-    header("Location: profile/profile.php");
+    header("Location: profile.php");
 }
 if (isset($_POST['login'])) {
     $username = htmlspecialchars($_POST['username']);
@@ -16,11 +16,10 @@ if (isset($_POST['login'])) {
             $_SESSION["id"] = $get_user["user_id"];
             $_SESSION["login"] = $get_user["user_login"];
             $_SESSION["type"] = $get_user["user_type"];
-            header("Location: profile/profile.php");
+            header("Location: profile.php");
         }
-    }
-    else {
-        header("Location: profile/register.php");
+    } else {
+        echo '<br>This account does not exist. Do you wish to <a href="register.php">create an account</a> ?';
     }
 }
 ?>
