@@ -36,9 +36,30 @@ function setData(data, value) {
 }
 
 function saveGame() {
-    console.log("the loop is working :)");
+    const data = {
+        score: getData("score"),
+        cursor: getData("cursor"),
+    }
+
+    const jsonData = JSON.stringify(data);
+    const saveRequest = new XMLHttpRequest();
+
+    saveRequest.onload = loadGame();
+
+    saveRequest.open("POST", "../resources/ajax/save.php", true);
+    saveRequest.setRequestHeader("Content-type", "application/json");
+    saveRequest.send(jsonData);
+}
+
+function updateGame() {
+
+}
+
+function loadGame() {
+
 }
 
 function startGameLoop() {
     setInterval(saveGame, 60000);
+    setInterval(updateGame, 1000);
 }
