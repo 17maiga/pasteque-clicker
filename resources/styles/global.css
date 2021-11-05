@@ -27,7 +27,7 @@ nav {
     flex-direction: row;
 }
 
-.header-right {
+.headerRight {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -35,7 +35,7 @@ nav {
     border-bottom: var(--watermelon_green) 2px solid;
 }
 
-.head-info {
+.headInfo {
     padding: 4px;
 }
 
@@ -48,16 +48,16 @@ a:visited {
     text-decoration: none;
 }
 
-.nav-element {
+.navElement {
     padding: 2px;
     border: var(--watermelon_green) 2px solid;
     width: max-content;
 }
 
-.nav-link {
+.navLink {
     color: var(--text);
 }
-.nav-link:visited {
+.navLink:visited {
     color: var(--text);
 }
 

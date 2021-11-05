@@ -6,16 +6,16 @@ if(isset($_SESSION["id"])){
 if (isset($_POST['login'])) {
     $username = htmlspecialchars($_POST['username']);
 
-    $get_user = $bdd->prepare("SELECT * FROM `users` WHERE `user_login` = ?");
-    $get_user->execute(array($username));
+    $getUser = $bdd->prepare("SELECT * FROM `users` WHERE `user_login` = ?");
+    $getUser->execute(array($username));
 
-    if ($get_user->rowCount()==1){
-        $get_user = $get_user->fetch();
+    if ($getUser->rowCount()==1){
+        $getUser = $getUser->fetch();
 
-        if (password_verify($_POST['password'], $get_user['user_password'])){
-            $_SESSION["id"] = $get_user["user_id"];
-            $_SESSION["login"] = $get_user["user_login"];
-            $_SESSION["type"] = $get_user["user_type"];
+        if (password_verify($_POST['password'], $getUser['user_password'])){
+            $_SESSION["id"] = $getUser["user_id"];
+            $_SESSION["login"] = $getUser["user_login"];
+            $_SESSION["type"] = $getUser["user_type"];
             header("Location: profile.php");
         }
     } else {

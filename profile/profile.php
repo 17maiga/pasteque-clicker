@@ -4,15 +4,15 @@ if (!isset($_SESSION["id"])){
     header("Location: profile/login.php");
 }
 
-$user_info = $bdd->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
-$user_info->execute(array($_SESSION["id"]));
-$user_info = $user_info->fetch();
+$userInfo = $bdd->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
+$userInfo->execute(array($_SESSION["id"]));
+$userInfo = $userInfo->fetch();
 
-$user_data = $bdd->prepare("SELECT * FROM `user_data` WHERE `user_id` = ?");
-$user_data->execute(array($_SESSION["id"]));
-$user_data = $user_data->fetch();
+$userData = $bdd->prepare("SELECT * FROM `user_data` WHERE `user_id` = ?");
+$userData->execute(array($_SESSION["id"]));
+$userData = $userData->fetch();
 
 ?>
 
 <div>Welcome, <?= $_SESSION["login"] ?>.</div>
-<div>You currently have <?= $user_data["user_score"] ?> pasteques.</div>
+<div>You currently have <?= $userData["user_score"] ?> pasteques.</div>

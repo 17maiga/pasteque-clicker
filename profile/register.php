@@ -11,16 +11,16 @@ if (isset($_POST['register'])) {
     $email = htmlspecialchars($_POST['email']);
     $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
-    $check_user = $bdd->prepare("SELECT * FROM `users` WHERE `user_login` = ?");
-    $check_user->execute(array($username));
+    $checkUser = $bdd->prepare("SELECT * FROM `users` WHERE `user_login` = ?");
+    $checkUser->execute(array($username));
 
-    if ($check_user->rowCount()==0){
+    if ($checkUser->rowCount()==0){
 
-        $check_email = $bdd->prepare("SELECT * FROM `users` WHERE `user_email` = ?");
-        $check_email->execute(array($email));
+        $checkEmail = $bdd->prepare("SELECT * FROM `users` WHERE `user_email` = ?");
+        $checkEmail->execute(array($email));
 
-        if ($check_email->rowCount()==0){
-            if(password_verify($_POST["conf_password"], $password)){
+        if ($checkEmail->rowCount()==0){
+            if(password_verify($_POST["confirmPassword"], $password)){
 
                 $insertUserRequest = $bdd->prepare("INSERT INTO `users` (`user_login`, `user_password`, `user_email`, `user_type`) VALUES (?, ?, ?, 'user')");
                 $insertUserRequest->execute(array($username, $password, $email));
@@ -51,7 +51,7 @@ if (isset($_POST['register'])) {
         <input type="text" name="login" placeholder="Username" required/>
         <input type="email" name="email" placeholder="Email address"/><br/>
         <input type="password" name="password" placeholder="Password" required/>
-        <input type="password" name="conf_password" placeholder="Confirm password" required/><br/>
+        <input type="password" name="confirmPassword" placeholder="Confirm password" required/><br/>
         <input type="submit" name="register" value="Create Account"/>
     </form>
 </div>

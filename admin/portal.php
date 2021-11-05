@@ -7,7 +7,7 @@ if (!isset($_SESSION["id"]) or $_SESSION["type"] != "admin"){
 
 <br>
 <div>
-    <a href="settings.php">Manage game settings</a><br>
+    <a href="globalSettings.php">Manage game settings</a><br>
     <a href="userList.php">Manage users</a><br>
     <?php
     if ($_SESSION["login"] == "admin"){
