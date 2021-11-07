@@ -1,6 +1,6 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', 'phpmyadmin', 'root');
 ?>
 <link rel="stylesheet" type="text/css" href="/resources/styles/global.css">
 <header>
