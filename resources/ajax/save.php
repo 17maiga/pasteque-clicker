@@ -1,6 +1,6 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', 'phpmyadmin', 'root');
 
 $jsonData = file_get_contents("php://input");
 $data = json_decode($jsonData, true);
