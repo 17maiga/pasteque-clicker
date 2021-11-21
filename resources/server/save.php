@@ -2,7 +2,9 @@
 // This code is only executed when an ajax request is sent from the game.js file to save the user's data to the server
 
 session_start(); // Required for session variables
-$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', 'phpmyadmin', 'root'); // Connection to the database (since we don't include the header)
+$dbUsername = 'phpmyadmin';
+$dbPassword = 'root';
+$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', $dbUsername, $dbPassword); // Connection to the database (since we don't include the header)
 
 // Json data sent by the game.js file is decoded and stored in $data
 $jsonData = file_get_contents("php://input"); 

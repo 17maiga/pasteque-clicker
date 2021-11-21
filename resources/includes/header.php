@@ -1,6 +1,8 @@
 <?php
 session_start(); // Required for session variables. Since almost all files include the header, we only need to start the session once for all of these
-$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', 'phpmyadmin', 'root'); // The database connection. Similarly to the session, it is used everywhere
+$dbUsername = 'phpmyadmin';
+$dbPassword = 'root';
+$bdd = new PDO('mysql:host=localhost;dbname=pasteque;charset=utf8', $dbUsername, $dbPassword); // The database connection. Similarly to the session, it is used everywhere
 ?>
 <!--Link to the CSS, favicon, and the page title-->
 <link rel="stylesheet" type="text/css" href="/resources/styles/global.css">

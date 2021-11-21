@@ -16,7 +16,7 @@ document.getElementById("settings").remove();
  * 
  * Increments the number of a specified item in the HTML page, if the score value is high enough for the purchase to happen. 
  * This is calculated using values set by site administrators using the following formula, for items other than the score itself :
- * price_of_specified_item + increase_factor * number_of_specified_item.
+ * price_of_specified_item + (increase_factor ^ (number_of_specified_item / 10)).
  * 
  * @see getData()
  * @see setData()
@@ -88,6 +88,7 @@ function updateGame() {
     gain += cursor * settings["updateFrequency"];
     setData("score", score + gain);
 }
+
 /**
  * Starts two loops:  the update loop and the game loop.
  * 
@@ -103,7 +104,7 @@ function startGameLoop() {
 /**
  * Displays the prices for the next upgrades
  * 
- * Calculates the price for the next pûrchase of an upgrade by getting the number of said upgrade and calculating the price according to this formula:
+ * Calculates the price for the next purchase of an upgrade by getting the number of said upgrade and calculating the price according to this formula:
  * upgrade_price + price_increase_factor*number_of_upgrade_owned
  * @see getData()
  */
@@ -115,12 +116,12 @@ function displayPrices() {
 /**
  * Fetches the settings from the HTML page and turns them into an array
  * 
- * @returns {Array}
+ * @returns {Array<number>}
  */
 function getSettings() {
     return {
-        saveFrequency: parseFloat(document.getElementById("saveFrequency").innerText),
-        updateFrequency: parseFloat(document.getElementById("updateFrequency").innerText),
+        saveFrequency: parseInt(document.getElementById("saveFrequency").innerText),
+        updateFrequency: parseInt(document.getElementById("updateFrequency").innerText),
         priceIncreaseFactor: parseInt(document.getElementById("priceIncreaseFactor").innerText),
         cursorPrice: parseInt(document.getElementById("cursorPrice").innerText)
     };

@@ -25,14 +25,14 @@ if (!isset($_SESSION['id'])){
 
 // User information
 if ($_GET['deleted'] == 0) {
-    // Triggered when dealing with an active user. Fetches the user's info from the 'users' and 'user_data' tables
+    // Triggered when dealing with an active user. Fetches the user's info from the 'users' and 'user_data' tables and stores it in the $user and $data variables
     $userInfo = $bdd->prepare("SELECT * FROM `users` WHERE `user_id` = ?");
     $userInfo->execute(array($_GET["id"]));
     $userData = $bdd->prepare("SELECT * FROM `user_data` WHERE `user_id` = ?");
     $userData->execute(array($_GET['id']));
     $data = $userData->fetch();
 } else {
-    // Triggered when dealing with a deleted user. Fetches the user's info from the 'deleted_users' table
+    // Triggered when dealing with a deleted user. Fetches the user's info from the 'deleted_users' table and stores it in the $user variable
     $userInfo = $bdd->prepare('SELECT * FROM deleted_users WHERE user_id = ?');
     $userInfo->execute(array($_GET['id']));
 }
@@ -96,8 +96,9 @@ if (isset($_POST["delete"])){
     <a href="userList.php">Back</a>
     <?php 
         if ($_GET['deleted'] == 0) {
-            if($user['user_login'] != 'admin') {
-                // If the user is still active and isn't the main admin user, allow for modifications to their admin status
+            if($user['user_type'] != 'admin' or $_SESSION['login'] == 'admin') {
+                // If the user is still active and isn't an admin, allow for modifications to their rank
+                // If we are logged in as the main admin, allow for modifications regardless of the user's rank
                 echo '<input type = "submit" name = "save" value = "Save modifications">';
             }
         } else {
@@ -132,23 +133,19 @@ if (isset($_POST["delete"])){
         echo "<tr><td>".$user["user_login"]."</td><td>".$user["user_email"]."</td><td>";
         if ($_GET['deleted'] == 0) {
             // If the user is active
-            if ($user["user_type"] != 'admin'){
-                // If the user isn't an admin, display a dropdown menu to change the user's role, automatically set to user
-                echo "<select name='role'>
-                <option value='admin'>Admin</option>
-                <option value='user' selected>User</option>
-                </select>";
+            if ($_SESSION["login"] == 'admin' && $user["user_login"] != 'admin') {
+                // If we are the main admin and we are not editing the main admin, display a dropdown menu to change the user's role, set to the user's type
+                echo "<select name='role'><option value='admin' "; 
+                if ($user["user_type"] == 'admin') echo "selected";
+                echo ">Admin</option><option value='user' ";
+                if ($user["user_type"] == 'user') echo "selected";
+                echo ">User</option></select>";
             } else {
-                // If the user is an admin
-                if ($_SESSION["login"] == 'admin' && $user["user_login"] != 'admin') {
-                    // If we are the main admin and we are not editing the main admin, display a dropdown menu to change the user's role, automatically set to admin
-                    echo "<select name='role'>
-                    <option value='admin' selected>Admin</option>
-                    <option value='user'>User</option>
-                    </select>";
-                } else {
-                    // If we aren't the main admin or are editing the main admin, simply display "admin"
+                // If we aren't the main admin or are editing the main admin, simply display the user's type
+                if ($user["user_type"] == 'admin') {
                     echo "admin";
+                } else {
+                    echo "user";
                 }
             }
         } else {

@@ -8,23 +8,35 @@ if (!isset($_SESSION['id'])){
 }
 
 
-// Fetch the user's info from the database
-$userInfo = $bdd->prepare('SELECT * FROM `users` WHERE `user_id` = ?');
-$userInfo->execute(array($_SESSION['id']));
-$userInfo = $userInfo->fetch();
-
-$userData = $bdd->prepare('SELECT * FROM `user_data` WHERE `user_id` = ?');
-$userData->execute(array($_SESSION['id']));
-$userData = $userData->fetch();
-
-
-// Triggers when the 'save changes' button is clicked. Updates the user's username in the database and in session variables
+// Triggers when the 'save changes' button is clicked. If a new username has been entered that isn't already taken, updates the user's username in the database and in session variables
 if(isset($_POST['save'])) {
-    $saveRequest = $bdd->prepare('UPDATE users SET user_login = ? WHERE user_id = ?');
-    $saveRequest->execute(array($_POST['login'], $_SESSION['id']));
+    if ($_POST['login'] != $_SESSION['login']) {
+        // Check if any changes have been made
 
-    $_SESSION['login'] = $_POST['login'];
+        // Get all users with the same username
+        $userCheckRequest = $bdd->prepare('SELECT user_login FROM users WHERE user_login = ?');
+        $userCheckRequest->execute(array($_POST['login']));
 
+        if($userCheckRequest->rowCount() == 0) {
+            // Check if any other users have the same username
+            $saveRequest = $bdd->prepare('UPDATE users SET user_login = ? WHERE user_id = ?');
+            $saveRequest->execute(array($_POST['login'], $_SESSION['id']));
+        
+            $_SESSION['login'] = $_POST['login'];
+        
+            header('Location: profile.php');
+        } else {
+            // Warn the user that this username is taken
+            echo '<div>This username is already taken</div>';
+        }
+    } else {
+        // If no changes have been made, redirect to the user's profile
+        header('Location: profile.php');
+    }
+}
+
+// Triggers when the 'discard changes' button is clicked. Simply redirects to the user's profile
+if(isset($_POST['discard'])){
     header('Location: profile.php');
 }
 
@@ -36,7 +48,7 @@ if(isset($_POST['reset'])){
     header('Location: profile.php');
 }
 
-// Triggers when the 'delete profile' button is clicked. Deletes the user's info from the database
+// Triggers when the 'delete profile' button is clicked. Deletes the user's info from the 'user_data', 'user_settings' and 'users' tables in the database
 if(isset($_POST['delete']) && $_SESSION['login'] != 'admin'){
     $deleteDataRequest = $bdd->prepare('DELETE FROM user_data WHERE user_id = ?');
     $deleteDataRequest->execute(array($_SESSION['id']));
@@ -57,6 +69,7 @@ if(isset($_POST['delete']) && $_SESSION['login'] != 'admin'){
     </div>
     <div>
         <input type='submit' name='save' value='Save changes'>
+        <input type="submit" name="discard" value="Discard changes">
         <input type='submit' name='reset' value='Reset save data'>
         <input type='submit' name='delete' value='Delete profile'>
     </div>
