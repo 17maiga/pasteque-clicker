@@ -26,46 +26,46 @@ Instructions :
 Project architecture :
 ======================
 
-root folder:
-|   admin: ================================ Everything related to site administration
-|   |   - deletedUsers.php -------------------- The list of all deleted users
-|   |   - globalSettings.php ------------------ The page where admins are able to change global game settings
-|   |   - portal.php -------------------------- The main admin portal
-|   |   - userList.php ------------------------ The list of all active users
-|   |   - userView.php ------------------------ The page where admins can edit a specific user's info
-|
-|   game: ================================= Everything related to the game
-|   |   - game.php ---------------------------- The game page, where users can play pasteque clicker
-|
-|   profile: ============================== Everything related to the user's profile
-|   |   - edit.php ---------------------------- Where a user can edit their username, reset their progress, or delete their profile
-|   |   - login.php --------------------------- Where a user can login
-|   |   - logout.php -------------------------- Where a user can logout
-|   |   - profile.php ------------------------- Where a user can see their profile
-|   |   - register.php ------------------------ Where a user can create an account
-|   |   - settings.php ------------------------ Where a user can edit their in-game settings
-|
-|   resources: ============================ Everything that isn't a page by itself and is used by other pages
-|   |   img: ================================== All images used in the site
-|   |   |   - pasteque.png ------------------------ The image used for the pasteque you click on in-game
-|   |
-|   |   includes: ============================= All PHP files included in other PHP files
-|   |   |   - header.php -------------------------- The site's header
-|   |
-|   |   scripts: ============================== All the JavaScript used in the site
-|   |   |   - game.js ----------------------------- The game's client-side logic, used by the "/game/game.php" file
-|   |
-|   |   server: =============================== All the PHP files related to AJAX requests
-|   |   |   - save.php ---------------------------- The PHP code that runs everytime the game is saved client-side
-|   |
-|   |   styles: =============================== All the CSS used in the site
-|   |   |   - global.css -------------------------- The CSS that applies to the whole site
-|   
-|   - .gitignore -------------------------- Git configuration file
-|   - database.sql ------------------------ The website's database. Import into mysql server.
-|   - favicon.ico ------------------------- The website's favicon
-|   - index.php --------------------------- The website's main entry point
-|   - README.md --------------------------- The website's README. You're reading it!
+    root folder:
+    |   admin: ================================ Everything related to site administration
+    |   |   - deletedUsers.php -------------------- The list of all deleted users
+    |   |   - globalSettings.php ------------------ The page where admins are able to change global game settings
+    |   |   - portal.php -------------------------- The main admin portal
+    |   |   - userList.php ------------------------ The list of all active users
+    |   |   - userView.php ------------------------ The page where admins can edit a specific user's info
+    |
+    |   game: ================================= Everything related to the game
+    |   |   - game.php ---------------------------- The game page, where users can play pasteque clicker
+    |
+    |   profile: ============================== Everything related to the user's profile
+    |   |   - edit.php ---------------------------- Where a user can edit their username, reset their progress, or delete their profile
+    |   |   - login.php --------------------------- Where a user can login
+    |   |   - logout.php -------------------------- Where a user can logout
+    |   |   - profile.php ------------------------- Where a user can see their profile
+    |   |   - register.php ------------------------ Where a user can create an account
+    |   |   - settings.php ------------------------ Where a user can edit their in-game settings
+    |
+    |   resources: ============================ Everything that isn't a page by itself and is used by other pages
+    |   |   img: ================================== All images used in the site
+    |   |   |   - pasteque.png ------------------------ The image used for the pasteque you click on in-game
+    |   |
+    |   |   includes: ============================= All PHP files included in other PHP files
+    |   |   |   - header.php -------------------------- The site's header
+    |   |
+    |   |   scripts: ============================== All the JavaScript used in the site
+    |   |   |   - game.js ----------------------------- The game's client-side logic, used by the "/game/game.php" file
+    |   |
+    |   |   server: =============================== All the PHP files related to AJAX requests
+    |   |   |   - save.php ---------------------------- The PHP code that runs everytime the game is saved client-side
+    |   |
+    |   |   styles: =============================== All the CSS used in the site
+    |   |   |   - global.css -------------------------- The CSS that applies to the whole site
+    |   
+    |   - .gitignore -------------------------- Git configuration file
+    |   - database.sql ------------------------ The website's database. Import into mysql server.
+    |   - favicon.ico ------------------------- The website's favicon
+    |   - index.php --------------------------- The website's main entry point
+    |   - README.md --------------------------- The website's README. You're reading it!
 
 
 What you can do :
