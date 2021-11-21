@@ -43,9 +43,10 @@ if ($userSettings->rowCount() != 0){
 
 <!--A div that stores the information related to pasteques-->
 <br>
-<div>Pasteques :
-    <span id="pastequeCount"><?= $data["user_score"] ?></span>
+<div>
+    <div>Click the pasteque !</div>
     <img src="../resources/img/pasteque.png" id="pastequeAdd" onclick="buy('score');">
+    <div id="pastequeCount"><?= $data["user_score"] ?></div>
 </div><br>
 
 <!--A div that stores the information related to cursors-->

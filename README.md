@@ -49,19 +49,20 @@ root folder:
 |   |   img: ================================== All images used in the site
 |   |   |   - pasteque.png ------------------------ The image used for the pasteque you click on in-game
 |   |
-|   |   includes: ============================= All .php files included in other .php files
+|   |   includes: ============================= All PHP files included in other PHP files
 |   |   |   - header.php -------------------------- The site's header
 |   |
 |   |   scripts: ============================== All the JavaScript used in the site
-|   |   |   - game.js ----------------------------- The game's client-side logic, used by the game.php file
+|   |   |   - game.js ----------------------------- The game's client-side logic, used by the "/game/game.php" file
 |   |
-|   |   server: =============================== All the .php files related to AJAX requests
-|   |   |   - save.php ---------------------------- The php code that runs everytime the game is saved client-side
+|   |   server: =============================== All the PHP files related to AJAX requests
+|   |   |   - save.php ---------------------------- The PHP code that runs everytime the game is saved client-side
 |   |
 |   |   styles: =============================== All the CSS used in the site
-|   |   |   - global.css -------------------------- The css that applies to the whole site
+|   |   |   - global.css -------------------------- The CSS that applies to the whole site
 |   
 |   - .gitignore -------------------------- Git configuration file
+|   - database.sql ------------------------ The website's database. Import into mysql server.
 |   - favicon.ico ------------------------- The website's favicon
 |   - index.php --------------------------- The website's main entry point
 |   - README.md --------------------------- The website's README. You're reading it!

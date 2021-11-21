@@ -67,8 +67,3 @@ input {
     color: var(--text);
     border: var(--text) solid 2px;
 }
-
-img {
-    width: 100px;
-    height: 100px;
-}
