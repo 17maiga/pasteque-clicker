@@ -1,11 +1,11 @@
 Delete message
 Delete user confirmation (with password?)
-Friend system ?
-User settings (save time...)
-Global default settings, only editable by admin
+General user profile (possibility to see other users ?)
+User profile edit form
+Database requests in separate php files for readability
 
 Cursor 1/s — 15
-Farm 100/s — 500
+Farm 10/s — 500
 Mine 500/s — 10,000
 Distillery 1,000/s — 50 000
 Pasteque-Man 17,000/s — 1 000 000

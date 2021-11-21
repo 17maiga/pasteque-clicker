@@ -1,4 +1,5 @@
 <?php
+// The header contains the navigation menu as well as the database connection. It is required in almost every php file.
 require_once "resources/includes/header.php";
 ?>
 <br>
