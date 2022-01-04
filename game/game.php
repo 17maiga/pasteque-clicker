@@ -1,41 +1,41 @@
 <?php
 // Header and redirections
-require_once "../resources/includes/header.php";
-if (!isset($_SESSION["id"])){
-    header("Location: ../profile/login.php");
+require_once '../resources/includes/header.php';
+if (!isset($_SESSION['id'])){
+    header('Location: ../profile/login.php');
 }
 
 // Fetch the user's game data
-$data = $bdd->prepare("SELECT * FROM user_data WHERE user_id = ?");
-$data->execute(array($_SESSION["id"]));
+$data = $bdd->prepare('SELECT * FROM user_data WHERE user_id = ?');
+$data->execute(array($_SESSION['id']));
 $data = $data->fetch();
 
 // Fetch the global settings
-$globalSettings = $bdd->prepare("SELECT * FROM `global_settings` WHERE `id` = ?");
+$globalSettings = $bdd->prepare('SELECT * FROM `global_settings` WHERE `id` = ?');
 $globalSettings->execute(array(0));
 $globalSettings  = $globalSettings->fetch();
 
 // Fetch the user settings if they exist
-$userSettings = $bdd->prepare("SELECT * FROM `user_settings` WHERE user_id = ?");
-$userSettings->execute(array($_SESSION["id"]));
+$userSettings = $bdd->prepare('SELECT * FROM `user_settings` WHERE user_id = ?');
+$userSettings->execute(array($_SESSION['id']));
 
 if ($userSettings->rowCount() != 0){
     // If the user settings are set, set the $saveFrequency and $updateFrequency variables with the user settings
     $userSettings = $userSettings->fetch();
-    $saveFrequency = $userSettings["save_frequency"];
-    $updateFrequency = $userSettings["update_frequency"];
+    $saveFrequency = $userSettings['save_frequency'];
+    $updateFrequency = $userSettings['update_frequency'];
 } else {
     // If the user settings aren't set, set the $saveFrequency and $updateFrequency variables with the global settings
-    $saveFrequency = $globalSettings["save_frequency"];
-    $updateFrequency = $globalSettings["update_frequency"];
+    $saveFrequency = $globalSettings['save_frequency'];
+    $updateFrequency = $globalSettings['update_frequency'];
 }
 ?>
 
 <div hidden id="settings"><!--A hidden div that stores the settings for the js to fetch afterwards-->
     <span id="saveFrequency"><?= strval($saveFrequency) ?></span>
     <span id="updateFrequency"><?= strval($updateFrequency) ?></span>
-    <span id="priceIncreaseFactor"><?= $globalSettings["price_increase_factor"] ?></span>
-    <span id="cursorPrice"><?= $globalSettings["cursor_price"] ?></span>
+    <span id="priceIncreaseFactor"><?= $globalSettings['price_increase_factor'] ?></span>
+    <span id="cursorPrice"><?= $globalSettings['cursor_price'] ?></span>
 </div>
 
 <!--Include the script to the page-->
