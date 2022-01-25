@@ -1,6 +1,10 @@
 # pasteque-clicker
 A clicker game based on watermelons. Heavily inspired by Cookie Clicker, although much less advanced.
 
+*La pastèque (Citrullus lanatus), aussi appelée melon d'eau, est une espèce de plantes herbacées de la famille des Cucurbitacées, originaire d'Afrique de l'Ouest1, largement cultivée pour ses gros fruits lisses, à chair rouge, jaune, verdâtre ou blanche et à graines noires ou rouges. Le terme désigne également ce fruit. Le fruit pèse généralement, à maturité, entre 2 et 5 kg.*
+
+*Il faut distinguer la pastèque consommable crue de la pastèque à confiture ou « citre » qui doit être cuite. Cette dernière est aussi communément appelée « courge gigérine » ou « courge barbarine » dans le sud de la France et « melons de Moscovie » en Charentes.*
+
 Instructions :
 ==============
 
